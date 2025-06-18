@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
 export default function Home() {
   const router = useRouter();
+
+  useEffect(() => {
+    router.push("/register");
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-400 via-pink-300 to-blue-300 dark:from-gray-900 dark:to-black transition-all duration-300 p-4">
