@@ -1,25 +1,25 @@
-import React, { useState } from "react"
-import { useRouter } from "next/router"
-import { loginUser } from "../services/api" // or "@/services/api" if alias works
-import { useAuth } from "../context/AuthContext" // or "@/context/AuthContext"
-
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { loginUser } from "../services/api"; // or "@/services/api"
+import { useAuth } from "../context/AuthContext"; // or "@/context/AuthContext"
 
 export default function Login() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const router = useRouter()
-  const { login } = useAuth()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+  const { login } = useAuth();
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault()
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
-      const res = await loginUser(email, password)
-      login(res.token)
-      router.push("/chat")
+      const res = await loginUser(email, password);
+      login(res.token);
+      router.push("/chat");
     } catch (err) {
-      alert("Login failed")
+      console.error("Login error:", err);
+      alert("Login failed");
     }
-  }
+  };
 
   return (
     <div className="p-6 max-w-sm mx-auto">
@@ -31,6 +31,7 @@ export default function Login() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
           className="w-full p-2 border rounded"
+          required
         />
         <input
           type="password"
@@ -38,6 +39,7 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
           className="w-full p-2 border rounded"
+          required
         />
         <button
           type="submit"
@@ -47,5 +49,5 @@ export default function Login() {
         </button>
       </form>
     </div>
-  )
+  );
 }

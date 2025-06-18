@@ -1,18 +1,23 @@
-import React, { useState } from "react"
-import { useRouter } from "next/router"
-import { registerUser } from "../services/api"  // use "@/services/api" only if alias works
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { registerUser } from "../services/api"; // Keep "@/services/api" if path alias works
 
 export default function Register() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const router = useRouter()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault()
-    await registerUser(email, password)
-    alert("Registered successfully")
-    router.push("/login")
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await registerUser(email, password);
+      alert("Registered successfully");
+      router.push("/login");
+    } catch (error) {
+      console.error("Registration failed:", error);
+      alert("Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <div className="p-6 max-w-sm mx-auto">
@@ -24,6 +29,7 @@ export default function Register() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
           className="w-full p-2 border rounded"
+          required
         />
         <input
           type="password"
@@ -31,6 +37,7 @@ export default function Register() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
           className="w-full p-2 border rounded"
+          required
         />
         <button
           type="submit"
@@ -40,5 +47,5 @@ export default function Register() {
         </button>
       </form>
     </div>
-  )
+  );
 }
