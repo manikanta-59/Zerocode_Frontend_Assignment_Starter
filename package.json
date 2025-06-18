@@ -1,0 +1,35 @@
+{
+    "name": "zerocode-fe-assignment",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "axios": "^1.10.0",
+        "framer-motion": "^12.18.1",
+        "jsonwebtoken": "^9.0.0",
+        "next": "^15.3.3",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.19.1",
+        "@types/prop-types": "^15.7.15",
+        "@types/react": "^18.2.40",
+        "autoprefixer": "^10.4.21",
+        "postcss": "^8.5.6",
+        "tailwindcss": "^3.4.1",
+        "typescript": "^5.4.5"
+    },
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "tailwindCSS.includeLanguages": {
+        "plaintext": "html",
+        "typescript": "javascript",
+        "typescriptreact": "html"
+    },
+    "css.validate": false
+}
