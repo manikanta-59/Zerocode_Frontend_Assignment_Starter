@@ -1,7 +1,7 @@
 # Zerocode Frontend Engineer Assignment
 
 ## Live Demo
-[https://your-live-url.vercel.app](https://your-live-url.vercel.app)
+https://zerocode-frontend-assignment-starte.vercel.app/register
 
 ##  Test Credentials
 - Email: manikanta@gmail.com
